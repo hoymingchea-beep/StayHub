@@ -1,48 +1,60 @@
-name: Windows Release
+name: Build & Release StayHub
 
 on:
   push:
+    branches:
+      - main
     tags:
       - 'v*'
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  build-windows:
+  build:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout source code
         uses: actions/checkout@v4
 
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          version: '6.8.3'
+          version: '6.11.1'
+          host: 'windows'
+          target: 'desktop'
           arch: 'win64_mingw'
-          modules: 'qtmultimedia'
+          tools: 'tools_mingw1310'
           cache: true
 
-      - name: Build
+      - name: Build StayHub
         shell: cmd
         run: |
           qmake StayHub.pro CONFIG+=release
-          mingw32-make release -j2
+          mingw32-make -j2
 
-      - name: Deploy Qt runtime
+      - name: Deploy Qt dependencies
         shell: cmd
         run: |
-          mkdir package
-          copy release\StayHub.exe package\StayHub.exe
-          windeployqt --release --no-translations package\StayHub.exe
+          mkdir deploy
+          copy release\StayHub.exe deploy\
+          windeployqt --release deploy\StayHub.exe
 
-      - name: Package
-        shell: pwsh
+      - name: Create ZIP
+        shell: powershell
         run: |
-          Compress-Archive -Path package\* -DestinationPath StayHub-Windows-x64.zip
+          Compress-Archive -Path deploy\* -DestinationPath StayHub-Windows-x64.zip
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: StayHub-Windows-x64
+          path: StayHub-Windows-x64.zip
 
       - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
         uses: softprops/action-gh-release@v2
         with:
           generate_release_notes: true
