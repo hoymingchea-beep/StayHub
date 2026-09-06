@@ -25,7 +25,12 @@ jobs:
           version: '6.8.3'
           arch: 'win64_mingw'
           modules: 'qtmultimedia'
+          tools: 'tools_mingw1310'
           cache: true
+
+      - name: Add matching MinGW compiler to PATH
+        shell: bash
+        run: echo "$IQTA_TOOLS/mingw1310_64/bin" >> $GITHUB_PATH
 
       - name: Build StayHub
         shell: cmd
