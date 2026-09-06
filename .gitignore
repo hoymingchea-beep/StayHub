@@ -1,0 +1,29 @@
+# Qt / qmake build output
+Makefile
+*.o
+*.obj
+*.moc
+*.rcc
+moc_*
+rcc_*
+qrc_*
+*.pro.user
+*.pro.user.*
+
+# Application/runtime data
+rental.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Build directories
+build/
+Build/
+release/
+debug/
+
+# IDE / OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

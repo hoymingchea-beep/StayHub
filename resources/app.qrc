@@ -1,0 +1,35 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/app_icon_16.png</file>
+        <file>icons/app_icon_24.png</file>
+        <file>icons/app_icon_32.png</file>
+        <file>icons/app_icon_48.png</file>
+        <file>icons/app_icon_64.png</file>
+        <file>icons/app_icon_128.png</file>
+        <file>icons/app_icon_256.png</file>
+        <file>icons/status_occupied_20.png</file>
+        <file>icons/status_occupied_24.png</file>
+        <file>icons/status_occupied_32.png</file>
+        <file>icons/status_occupied_48.png</file>
+        <file>icons/status_available_20.png</file>
+        <file>icons/status_available_24.png</file>
+        <file>icons/status_available_32.png</file>
+        <file>icons/status_available_48.png</file>
+        <file>icons/icon_key.png</file>
+        <file>icons/icon_card.png</file>
+        <file>icons/icon_dashboard.png</file>
+        <file>icons/icon_total_rooms.png</file>
+        <file>icons/icon_expected_rent.png</file>
+        <file>icons/icon_settings.png</file>
+        <file>icons/icon_history.png</file>
+        <file>icons/icon_user_outline.png</file>
+        <file>icons/icon_lock_outline.png</file>
+        <file>fonts/KantumruyPro-Regular.ttf</file>
+        <file>fonts/KantumruyPro-Medium.ttf</file>
+        <file>fonts/KantumruyPro-SemiBold.ttf</file>
+        <file>fonts/KantumruyPro-Bold.ttf</file>
+        <file>fonts/PlusJakartaSans-Bold.ttf</file>
+        <file>fonts/PlusJakartaSans-ExtraBold.ttf</file>
+        <file>sounds/stayhub_start.wav</file>
+    </qresource>
+</RCC>
